@@ -16,10 +16,19 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(dosyayolu) {
+  var fs = require(dosyayolu);
+const dosyaadi = fs.readdir('.', function (err, files) {
+ if (err)
+    throw err;
+ for (var index in files) {
+    console.log(files[index]);
+ }
+ });
+ return dosyaadi;
 }
-
+console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"));
+  
 /*
   GÖREV 2
   - Input:  Bir sayı arrayini parametre olarak alacak bir fonksiyon oluştur.
@@ -38,9 +47,21 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(arr) {
+ if (arr.length > 0){
+  const Geneltoplam = arr.reduce((toplam , index) => {
+    return toplam + index ;
+  }, 0);
+    const ortalama = Geneltoplam / arr.length ;
+    return ortalama ;
+ }else{
+  return null
+ }
+  
 }
+console.log(ortalamaBul([1]));
+console.log(ortalamaBul([1,2,3,4]));
+console.log(ortalamaBul([]));
 
 /*
   GÖREV 3
@@ -62,9 +83,30 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
-}
+function ortalamadanBuyukleriBul(arr2) { 
+   const dizi = [...arr2];
+   if (dizi.length>0){
+    const Geneltoplam2 = dizi.reduce((toplam , index) => {
+    return toplam + index ;
+  }, 0);
+    const ortalama = Geneltoplam2 / dizi.length ;
+    const ortalamadanbuyuk = [];
+    for (let i=0; i <= dizi.length; i++){
+      if (i>=ortalama){
+        ortalamadanbuyuk.push(i);
+      }
+    }
+   return ortalamadanbuyuk;
+   }else {
+    return null;
+   }
+   
+  }
+
+  console.log (ortalamadanBuyukleriBul([1,2,3,4]));
+  console.log(ortalamadanBuyukleriBul([]));
+  console.log(ortalamadanBuyukleriBul([3,4]));
+  console.log(ortalamadanBuyukleriBul([3]));
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
